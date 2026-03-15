@@ -1,50 +1,83 @@
-*{
-   margin:0%;
-   padding:0%;
+* {
+   margin: 0%;
+   padding: 0%;
    box-sizing: border-box;
    font-family: inherit;
 }
 
-html,body{
-   height: 100%;
+html,
+body {
+   min-height: 100vh;
    width: 100%;
    background-color: #FAFAFA;
    color: black;
    font-family: 'Montserrat', sans-serif;
    font-weight: 500;
+   scroll-behavior: smooth;
 }
 
 :root {
    --accent: #D44D16;
 }
 
-.navbar{
+.navbar {
    display: flex;
    background: #FFFFFF;
    padding: 8px 10vw;
    align-items: center;
    justify-content: space-between;
-   box-shadow: 0 1px 7px rgba(0,0,0,0.1);
+   position: sticky;
+   top: 0;
+   z-index: 100;
+   box-shadow: 0 1px 7px rgba(0, 0, 0, 0.1);
 }
-.logo{
+
+.logo {
    height: 4em;
 }
-.nav-links{
+
+.nav-links {
    list-style: none;
    display: flex;
    align-items: center;
    gap: 30px;
 }
-.nav-btn{
+
+.nav-links li {
+   list-style: none;
+}
+
+.hamburger {
+   display: none;
+}
+
+.nav-links li a {
+   text-decoration: none;
+   color: black;
+   transition: 0.2s ease;
+}
+
+.nav-links li a:hover {
+   color: var(--accent);
+}
+
+.nav-btn {
    padding: 6px 15px;
    border: 0;
    border-radius: 8px;
    color: white;
    background: black;
+   cursor: pointer;
+   transition: 0.3s ease;
+}
+
+.nav-btn:hover {
+   background: var(--accent);
+   letter-spacing: 1px;
 }
 
 
-.hero{
+.hero {
    padding: 15vh 0;
    display: flex;
    gap: 25px;
@@ -53,24 +86,28 @@ html,body{
    align-items: center;
    background: radial-gradient(circle at 50% 50%, rgba(212, 77, 22, 0.1) 0%, transparent 60%);
 }
-.hero h1{
+
+.hero h1 {
    font-weight: 500;
    font-size: 3.5rem;
    width: 55vw;
    text-align: center;
 }
-.hero h3{
+
+.hero h3 {
    font-weight: 400;
    font-size: 1.3rem;
    width: 45vw;
    text-align: center;
    color: rgb(70, 70, 70);
 }
-.hero p{
+
+.hero p {
    color: var(--accent);
    font-size: large;
 }
-.hero button{
+
+.hero button {
    font-size: large;
    padding: 15px 35px;
    margin-top: 6vh;
@@ -79,67 +116,109 @@ html,body{
    color: white;
    background: var(--accent);
    font-weight: 600;
+   cursor: pointer;
+   transition: 0.3s ease;
+}
+
+.hero button:hover {
+   box-shadow: 0 0 50px rgba(212, 77, 22, 0.5);
+   letter-spacing: 1px;
+}
+
+.btn-arrow {
+   display: inline-block;
+   opacity: 0;
+   max-width: 0;
+   overflow: hidden;
+   transition: 0.3s ease;
+}
+
+.hero button .btn-arrow {
+   opacity: 1;
+   max-width: 20px;
+   margin-left: 5px;
+}
+
+.nav-btn:hover .btn-arrow,
+.contact-form button:hover .btn-arrow {
+   opacity: 1;
+   max-width: 20px;
+   margin-left: 5px;
+}
+
+.hero button:hover .btn-arrow {
+   transform: rotate(360deg);
 }
 
 
-.section-tag{
+.section-tag {
    color: var(--accent);
    font-size: 1rem;
    font-weight: 600;
    letter-spacing: 1px;
    text-transform: uppercase;
 }
-.section-heading{
+
+.section-heading {
    font-size: 2.2rem;
    font-weight: 600;
    margin-top: 10px;
    color: #111111;
 }
-.about{
+
+.about {
    padding: 15vh 10vw;
    display: flex;
    align-items: center;
    gap: 60px;
    background: #F2F2F2;
 }
-.about-left{
+
+.about-left {
    flex: 1.2;
    border-left: 4px solid var(--accent);
    padding-left: 30px;
 }
-.about-left .section-heading{
+
+.about-left .section-heading {
    margin-bottom: 20px;
 }
-.about-text{
+
+.about-text {
    font-size: 1.05rem;
    line-height: 1.8;
    color: rgb(70, 70, 70);
    font-weight: 400;
    margin-top: 45px;
 }
-.about-right{
+
+.about-right {
    flex: 0.8;
    display: flex;
    flex-direction: column;
    gap: 20px;
 }
-.about-card{
+
+.about-card {
    background: #FFFFFF;
    padding: 25px 30px;
    border-radius: 12px;
-   box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
    cursor: default;
 }
-.about-card:hover{
+
+.about-card:hover {
    transform: translateY(-3px);
-   box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
-.about-card h3{
+
+.about-card h3 {
    font-size: 1.15rem;
    font-weight: 600;
    color: var(--accent);
 }
-.about-card p{
+
+.about-card p {
    font-size: 0.95rem;
    color: rgb(90, 90, 90);
    font-weight: 400;
@@ -147,27 +226,31 @@ html,body{
 }
 
 
-.services{
+.services {
    padding: 15vh 10vw;
    text-align: center;
 }
-.services-heading{
+
+.services-heading {
    font-size: 2.2rem;
    font-weight: 600;
    margin-top: 10px;
    color: #111111;
 }
-.services-heading span{
-   color: rgb(120,120,120);
+
+.services-heading span {
+   color: rgb(120, 120, 120);
 }
-.services-grid{
+
+.services-grid {
    display: flex;
    margin-top: 50px;
    border: 1px solid #E0E0E0;
    border-radius: 12px;
    overflow: hidden;
 }
-.service-card{
+
+.service-card {
    flex: 1;
    padding: 50px 35px;
    text-align: left;
@@ -176,27 +259,32 @@ html,body{
    background: #FFFFFF;
    border-right: 1px solid #E0E0E0;
 }
-.service-card:last-child{
+
+.service-card:last-child {
    border-right: none;
 }
-.service-icon{
+
+.service-icon {
    width: 60px;
    height: 60px;
    margin-bottom: 25px;
 }
-.service-card h3{
+
+.service-card h3 {
    font-size: 1.2rem;
    font-weight: 600;
    margin-bottom: 12px;
 }
-.service-card p{
+
+.service-card p {
    font-size: 0.95rem;
-   color: rgb(100,100,100);
+   color: rgb(100, 100, 100);
    font-weight: 400;
    line-height: 1.7;
    flex: 1;
 }
-.card-btn{
+
+.card-btn {
    margin-top: 25px;
    padding: 10px 20px;
    border: 2px solid #111111;
@@ -208,56 +296,69 @@ html,body{
    cursor: pointer;
    width: fit-content;
 }
-.card-btn:hover{
+
+.card-btn:hover {
    background: #111111;
    color: white;
 }
 
-.community{
+.community {
    padding: 15vh 10vw;
    text-align: center;
    background: #F2F2F2;
 }
-.community-text{
+
+.community-text {
    max-width: 550px;
    margin: 20px auto 0;
    font-size: 1.05rem;
-   color: rgb(80,80,80);
+   color: rgb(80, 80, 80);
    font-weight: 400;
    line-height: 1.7;
 }
-.carousel-wrap{
+
+.carousel-wrap {
    position: relative;
    margin-top: 40px;
 }
-.carousel{
+
+.carousel {
    display: flex;
    gap: 25px;
    overflow-x: auto;
    scroll-behavior: smooth;
    padding: 10px 0;
 }
-.carousel::-webkit-scrollbar{
+
+.carousel::-webkit-scrollbar {
    display: none;
 }
-.community-card{
+
+.community-card {
    min-width: 350px;
    border-radius: 12px;
    overflow: hidden;
    background: #FFFFFF;
    flex-shrink: 0;
 }
-.community-card img{
+
+.community-card img {
    width: 100%;
    height: 320px;
    object-fit: cover;
 }
-.community-card h4{
+
+.align-top {
+   object-position: top;
+}
+
+.community-card h4 {
    padding: 15px;
    font-size: 1rem;
    font-weight: 600;
 }
-.carousel-btn{
+
+.carousel-btn {
    position: absolute;
    top: 50%;
    transform: translateY(-50%);
@@ -270,63 +371,74 @@ html,body{
    cursor: pointer;
    z-index: 2;
 }
-.carousel-btn.left{
+
+.carousel-btn.left {
    left: -20px;
 }
-.carousel-btn.right{
+
+.carousel-btn.right {
    right: -20px;
 }
 
 
-.contact{
+.contact {
    display: flex;
    align-items: center;
    background: #111111;
    padding: 8vh 6vw;
    gap: 60px;
-   margin: 5vh 10vw;
+   margin: 10vh 10vw;
    border-radius: 20px;
 }
-.contact-img{
+
+.contact-img {
    flex: 1;
 }
-.contact-img img{
+
+.contact-img img {
    width: 100%;
 }
-.contact-form{
+
+.contact-form {
    flex: 1;
 }
-.contact-form h2{
+
+.contact-form h2 {
    color: #FFFFFF;
    font-size: 2rem;
    font-weight: 600;
 }
-.contact-form > p{
-   color: rgba(255,255,255,0.6);
+
+.contact-form>p {
+   color: rgba(255, 255, 255, 0.6);
    margin-top: 10px;
    font-weight: 400;
 }
-.contact-form form{
+
+.contact-form form {
    margin-top: 30px;
    display: flex;
    flex-direction: column;
    gap: 15px;
 }
+
 .contact-form input,
-.contact-form textarea{
+.contact-form textarea {
    padding: 14px 18px;
-   background: rgba(255,255,255,0.1);
-   border: 1px solid rgba(255,255,255,0.2);
+   background: rgba(255, 255, 255, 0.1);
+   border: 1px solid rgba(255, 255, 255, 0.2);
    border-radius: 8px;
    color: #FFFFFF;
    font-size: 1rem;
    outline: none;
 }
+
 .contact-form input::placeholder,
-.contact-form textarea::placeholder{
-   color: rgba(255,255,255,0.5);
+.contact-form textarea::placeholder {
+   color: rgba(255, 255, 255, 0.5);
 }
-.contact-form button{
+
+.contact-form button {
    padding: 14px 30px;
    background: var(--accent);
    border: none;
@@ -336,4 +448,182 @@ html,body{
    font-weight: 600;
    cursor: pointer;
    width: fit-content;
+   transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+   background: #FFFFFF;
+   color: var(--accent);
+   letter-spacing: 1.5px;
+}
+
+
+.footer {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 8vh 10vw;
+   background: #ffffff;
+   border-top: 2px solid #d4d4d4;
+}
+
+.footer-right {
+   display: flex;
+   flex-direction: column;
+   gap: 8px;
+}
+
+.footer-right a {
+   color: #111111;
+   text-decoration: none;
+   font-size: 0.9rem;
+   font-weight: 400;
+}
+
+.footer-right p {
+   color: rgba(90, 90, 90);
+   font-size: 0.85rem;
+   font-weight: 400;
+   margin-top: 10px;
+}
+
+.footer-left img {
+   height: 100px;
+}
+
+
+/* Tablets */
+@media (max-width: 900px) {
+   .navbar{
+      padding: 6px 10px;
+   }
+   .nav-links{
+      gap: 15px;
+   }
+   .hero h1{
+      width: 90vw;
+      font-size: 2.7rem;
+   }
+   .hero h3{
+      width: 75vw;
+   }
+   .about {
+      flex-direction: column;
+      gap: 40px;
+   }
+   .about-right{
+      flex-direction: row;
+      gap: 10px;
+   }
+   .about-left {
+      border-left: none;
+      padding-left: 0;
+   }
+
+   .services-grid {
+      flex-direction: column;
+   }
+
+   .service-card {
+      border-right: none;
+      border-bottom: 1px solid #E0E0E0;
+   }
+
+   .service-card:last-child {
+      border-bottom: none;
+   }
+
+   .contact {
+      flex-direction: column;
+      margin: 5vh 5vw;
+      gap: 0px;
+   }
+
+   .footer {
+      padding: 10px 30px;
+      gap: 5px;
+      text-align: center;
+   }
+}
+
+/* Mobiles */
+@media (max-width: 600px) {
+   .navbar{
+      padding: 4px 4px;
+      position: static;
+   }
+   .hamburger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+   }
+
+   .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #111111;
+      border-radius: 5px;
+   }
+
+   .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #FFFFFF;
+      flex-direction: column;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+   }
+
+   .nav-links.nav-active {
+      max-height: 350px;
+      padding: 20px 0;
+   }
+
+   .nav-links li {
+      text-align: center;
+      padding: 10px 0;
+   }
+
+   .hero h1 {
+      font-size: 2rem;
+      width: 90vw;
+   }
+
+   .hero h3 {
+      font-size: 1rem;
+      width: 85vw;
+   }
+
+   .hero,
+   .about,
+   .services,
+   .community {
+      padding: 8vh 5vw;
+   }
+   .about-right{
+      flex-direction: column;
+   }
+
+   .contact {
+      margin: 5vh 5vw;
+      padding: 5vh 5vw;
+   }
+
+   .community-card {
+      min-width: 260px;
+   }
+
+   .section-heading,
+   .services-heading {
+      font-size: 1.6rem;
+   }
+   .footer{
+      flex-direction: column;
+   }
 }

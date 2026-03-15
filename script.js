@@ -8,3 +8,7 @@ function handleSubmit(e) {
     alert('Thank you! We will get back to you soon.');
     e.target.reset();
 }
+
+function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('nav-active');
+}
